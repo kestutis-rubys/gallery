@@ -48,7 +48,6 @@ function generateImages() {
     const img = document.createElement("img");
     img.src = image.src;
     img.alt = image.alt;
-    console.log(images[i].src);
 
     img.addEventListener("click", () => {
       selectedImg.src = image.src;
@@ -61,7 +60,6 @@ function generateImages() {
         if (imageIndex === 0) {
           imageIndex = images.length - 1;
           selectedImg.src = images[imageIndex].src;
-          console.log(selectedImg);
         } else {
           imageIndex -= 1;
           selectedImg.src = images[imageIndex].src;
@@ -73,7 +71,6 @@ function generateImages() {
         if (imageIndex === images.length - 1) {
           imageIndex = 0;
           selectedImg.src = images[imageIndex].src;
-          console.log(selectedImg);
         } else {
           imageIndex += 1;
           selectedImg.src = images[imageIndex].src;
