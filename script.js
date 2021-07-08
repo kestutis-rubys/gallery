@@ -41,7 +41,7 @@ let images = [
   },
 ];
 
-window.addEventListener("load", generateImages);
+window.addEventListener("DOMContentLoaded", generateImages);
 
 function generateImages() {
   images.forEach((image, i) => {
@@ -70,7 +70,7 @@ function generateImages() {
 
       document.querySelector(".next").addEventListener("click", nextImage);
       function nextImage() {
-        if (imageIndex === images.length) {
+        if (imageIndex === images.length - 1) {
           imageIndex = 0;
           selectedImg.src = images[imageIndex].src;
           console.log(selectedImg);
@@ -85,7 +85,7 @@ function generateImages() {
   });
 
   // popup.addEventListener("click", () => {
-  //   popup.style.display = "";
-  //   selectedImg.style.display = "";
+  //   popup.style.display = "none";
+  //   selectedImg.style.display = "none";
   // });
 }
