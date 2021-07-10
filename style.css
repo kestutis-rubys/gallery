@@ -34,34 +34,44 @@ img {
   padding: 50px;
 }
 
+.active {
+  display: flex !important;
+}
+
 .selectedImg {
-  display: none;
+  display: block;
   height: 500px;
   width: 500px;
 }
 
 .prev,
 .next {
+  position: fixed;
   cursor: pointer;
-  position: absolute;
-  width: auto;
   padding: 15px 25px;
   margin: 0 15px;
   font-weight: bold;
   font-size: 24px;
   background-color: rgba(0, 0, 0, 0.1);
   color: #fff;
-  z-index: 99999999;
 }
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
 .prev {
   left: 0;
 }
-/* arrow */
+
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.arrows {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
 }

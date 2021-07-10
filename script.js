@@ -1,6 +1,9 @@
 const gallery = document.querySelector(".gallery");
 const popup = document.querySelector(".popup");
 const selectedImg = document.querySelector(".selectedImg");
+const arrows = document.querySelector(".arrows");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
 let imageIndex = 0;
 let images = [
   {
@@ -51,11 +54,12 @@ function generateImages() {
 
     img.addEventListener("click", () => {
       selectedImg.src = image.src;
-      popup.style.display = "flex";
-      selectedImg.style.display = "block";
+      popup.classList.add("active");
+      arrows.classList.add("active");
+      selectedImg.classList.add("selectedImg");
 
       imageIndex = i;
-      document.querySelector(".prev").addEventListener("click", prevImage);
+      prev.addEventListener("click", prevImage);
       function prevImage() {
         if (imageIndex === 0) {
           imageIndex = images.length - 1;
@@ -66,7 +70,7 @@ function generateImages() {
         }
       }
 
-      document.querySelector(".next").addEventListener("click", nextImage);
+      next.addEventListener("click", nextImage);
       function nextImage() {
         if (imageIndex === images.length - 1) {
           imageIndex = 0;
@@ -76,13 +80,20 @@ function generateImages() {
           selectedImg.src = images[imageIndex].src;
         }
       }
+
+      popup.addEventListener("click", () => {
+        popup.classList.remove("active");
+        selectedImg.classList.remove("selectedImg");
+        arrows.classList.remove("active");
+        removeEvents();
+      });
+
+      function removeEvents() {
+        next.removeEventListener("click", nextImage);
+        prev.removeEventListener("click", prevImage);
+      }
     });
 
     gallery.appendChild(img);
   });
-
-  // popup.addEventListener("click", () => {
-  //   popup.style.display = "none";
-  //   selectedImg.style.display = "none";
-  // });
 }
